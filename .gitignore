@@ -1,3 +1,5 @@
+/deps/v8
+
 core
 vgcore.*
 .waf*
