@@ -131,7 +131,7 @@ void TCPWrap::Initialize(Handle<Object> target) {
 TCPWrap* TCPWrap::Unwrap(Local<Object> obj) {
   assert(!obj.IsEmpty());
   assert(obj->InternalFieldCount() > 0);
-  return static_cast<TCPWrap*>(obj->GetPointerFromInternalField(0));
+  return static_cast<TCPWrap*>(obj->GetAlignedPointerFromInternalField(0));
 }
 
 
@@ -328,7 +328,7 @@ void TCPWrap::OnConnection(uv_stream_t* handle, int status) {
     // Unwrap the client javascript object.
     assert(client_obj->InternalFieldCount() > 0);
     TCPWrap* client_wrap =
-        static_cast<TCPWrap*>(client_obj->GetPointerFromInternalField(0));
+        static_cast<TCPWrap*>(client_obj->GetAlignedPointerFromInternalField(0));
 
     if (uv_accept(handle, (uv_stream_t*)&client_wrap->handle_)) return;
 
