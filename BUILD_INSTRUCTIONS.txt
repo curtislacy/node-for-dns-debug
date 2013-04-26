@@ -1,0 +1,8 @@
+Custom Node 0.8.9 that uses V8 version 3.17
+Build instructions.
+
+git clone http://github.com/v8/v8.git deps/v8
+cd deps/v8
+git checkout origin/3.17
+cd ../..
+./configure ; make
